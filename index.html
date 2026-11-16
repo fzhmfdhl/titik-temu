@@ -238,7 +238,7 @@ async function openAdmin(){
  if(!adminKey){location.hash='';return}
  try{const r=await fetch(SCRIPT_URL+'?key='+encodeURIComponent(adminKey));const j=await r.json();if(!j.ok)throw 0;
   rows=j.rows.sort((a,b)=>(b.ts||0)-(a.ts||0));$('tA').click();render()}
- catch(e){adminKey=null;alert('Kode salah atau data tidak bisa dimuat.');location.hash=''}}
+ catch(e){adminKey=null;alert('Gagal: '+(e&&e.message?e.message:e));location.hash=''}}
 const rt=()=>{if(location.hash==='#admin')openAdmin();else $('tF').click()};
 addEventListener('hashchange',rt);rt();
 </script></body></html>
